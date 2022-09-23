@@ -1,11 +1,12 @@
 const express = require('express')
+const app = express()
 const connectDB = require('./config/database')
 const homeRoutes = require('./routes/home')
 const phonebookRoutes = require('./routes/phonebook')
 const dotenv = require('dotenv')
 
 // Load config
-dotenv.config({ path: '/.config/config.env'})
+dotenv.config({ path: './config/.env'})
 
 connectDB()
 

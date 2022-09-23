@@ -1,51 +1,39 @@
-const Todo = require('../models/Todo')
+const Phonebook = require('../models/Phonebook')
 
 module.exports = {
-    getTodos: async (req,res)=>{
+    getPhonebook: async (req,res)=>{
         try{
-            const todoItems = await Todo.find()
-            const itemsLeft = await Todo.countDocuments({completed: false})
-            res.render('todos.ejs', {todos: todoItems, left: itemsLeft})
+            const phonebookItems = await Phonebook.find()
+            res.render('phonebook.ejs', {phonebooks: phonebookItems})
         }catch(err){
             console.log(err)
         }
     },
-    createTodo: async (req, res)=>{
+    createPhonebook: async (req, res)=>{
         try{
-            await Todo.create({todo: req.body.todoItem, completed: false})
-            console.log('Todo has been added!')
-            res.redirect('/todos')
+            console.log(req.body)
+            await Phonebook.create({Phonebook: req.body.items})
+            console.log('Contact has been added!')
+            res.redirect('/phonebook')
         }catch(err){
             console.log(err)
         }
     },
-    markComplete: async (req, res)=>{
+    editPhonebook: async (req, res)=>{
         try{
-            await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                completed: true
-            })
+            await Phonebook.findOneAndUpdate({_id:req.body.PhonebookIdFromJSFile}
+            )
             console.log('Marked Complete')
             res.json('Marked Complete')
         }catch(err){
             console.log(err)
         }
     },
-    markIncomplete: async (req, res)=>{
+    deletePhonebook: async (req, res)=>{
+        console.log(req.body.PhonebookIdFromJSFile)
         try{
-            await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-                completed: false
-            })
-            console.log('Marked Incomplete')
-            res.json('Marked Incomplete')
-        }catch(err){
-            console.log(err)
-        }
-    },
-    deleteTodo: async (req, res)=>{
-        console.log(req.body.todoIdFromJSFile)
-        try{
-            await Todo.findOneAndDelete({_id:req.body.todoIdFromJSFile})
-            console.log('Deleted Todo')
+            await Phonebook.findOneAndDelete({_id:req.body.PhonebookIdFromJSFile})
+            console.log('Deleted Phonebook')
             res.json('Deleted It')
         }catch(err){
             console.log(err)

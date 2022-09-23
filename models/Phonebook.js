@@ -7,19 +7,23 @@ const PhonebookSchema = new mongoose.Schema({
   },
   lastName: {
     type: String,
-    required: true,
+    required: false,
   },
-  number: {
+  company: {
+    type: String,
+    required: false,
+  },
+  phone: {
     type: Number,
     required: true,
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
-  number: {
-    type: Number,
-    required: true,
+  address: {
+    type: String,
+    required: false,
   }
 })
 

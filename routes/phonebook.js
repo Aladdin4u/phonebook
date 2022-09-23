@@ -2,14 +2,12 @@ const express = require('express')
 const router = express.Router()
 const phonebookController = require('../controllers/phonebook')
 
-router.get('/', phonebookController.getphonebook)
+router.get('/', phonebookController.getPhonebook)
 
-router.post('/createTodo', phonebookController.createTodo)
+router.post('/createPhonebook', phonebookController.createPhonebook)
 
-router.put('/markComplete', phonebookController.markComplete)
+router.put('/editPhonebook', phonebookController.editPhonebook)
 
-router.put('/markIncomplete', phonebookController.markIncomplete)
-
-router.delete('/deleteTodo', phonebookController.deleteTodo)
+router.delete('/deletePhonebook', phonebookController.deletePhonebook)
 
 module.exports = router
