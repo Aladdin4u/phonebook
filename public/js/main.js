@@ -12,7 +12,7 @@ Array.from(editItem).forEach((el)=>{
 async function deletePhonebook(){
     const pbId = this.parentNode.dataset.id
     try{
-        const response = await fetch('Phonebooks/deletePhonebook', {
+        const response = await fetch('phonebook/deletePhonebook', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
@@ -30,7 +30,7 @@ async function deletePhonebook(){
 async function editPhonebook(){
     const pbId = this.parentNode.dataset.id
     try{
-        const response = await fetch('Phonebooks/editPhonebook', {
+        const response = await fetch('phonebook/editPhonebook', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({

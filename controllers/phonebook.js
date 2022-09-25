@@ -3,7 +3,7 @@ const Phonebook = require('../models/Phonebook')
 module.exports = {
     getPhonebook: async (req,res)=>{
         try{
-            const phonebookItems = await Phonebook.find()
+            const phonebookItems = await Phonebook.find().toArray()
             res.render('phonebook.ejs', {phonebooks: phonebookItems})
         }catch(err){
             console.log(err)
@@ -12,7 +12,7 @@ module.exports = {
     createPhonebook: async (req, res)=>{
         try{
             console.log(req.body)
-            await Phonebook.create({Phonebook: req.body.items})
+            await Phonebook.create({firstName: req.body.firstName,lastName: req.body.lastName,company: req.body.company,phone: req.body.phone,email: req.body.email,address: req.body.address})
             console.log('Contact has been added!')
             res.redirect('/phonebook')
         }catch(err){
@@ -23,8 +23,8 @@ module.exports = {
         try{
             await Phonebook.findOneAndUpdate({_id:req.body.PhonebookIdFromJSFile}
             )
-            console.log('Marked Complete')
-            res.json('Marked Complete')
+            console.log('Edit Phonebook')
+            res.json('Edit Phonebook')
         }catch(err){
             console.log(err)
         }

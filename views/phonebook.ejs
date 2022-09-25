@@ -10,9 +10,10 @@
     <h1>Contact</h1>
     <ul>
         <% phonebooks.forEach(el => { %>
-            <li class="test"><%= el.phonebooks %>
-                <span><i class="fas fas-edit">edit</i></span>
-                <span><i class="fas fas-trash">delete</i></span>
+            <li class="test" data-id='<%=el._id%>'>
+                <span><%= el.phonebook.firstName %></span>
+                <span class="edit">edit</span>
+                <span class="del">delete</span>
             </li>
         <% }) %>
     </ul>
