@@ -3,8 +3,8 @@ const Phonebook = require('../models/Phonebook')
 module.exports = {
     getPhonebook: async (req,res)=>{
         try{
-            const phonebookItems = await Phonebook.find().toArray()
-            res.render('phonebook.ejs', {phonebooks: phonebookItems})
+            const phonebookItems = await Phonebook.find()
+            res.render('phonebook.ejs', {phonebook: phonebookItems})
         }catch(err){
             console.log(err)
         }

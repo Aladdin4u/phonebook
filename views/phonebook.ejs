@@ -8,16 +8,21 @@
 </head>
 <body>
     <h1>Contact</h1>
+    
     <ul>
-        <% phonebooks.forEach(el => { %>
-            <li class="test" data-id='<%=el._id%>'>
-                <span><%= el.phonebook.firstName %></span>
-                <span class="edit">edit</span>
-                <span class="del">delete</span>
+        <% phonebook.forEach( el => { %>
+            <li class='firstName'>
+                <span><%= el.firstName %></span>
+                <span><%= el.lastName %></span>
+                <span><%= el.company %></span>
+                <span><%= el.phone %></span>
+                <span><%= el.email %></span>
+                <span><%= el.address %></span>
+                <span class='del'> Delete </span>
             </li>
-        <% }) %>
+        <% }) %>    
     </ul>
-
+          
     <h1>Create Contact</h1>
     <form action="/phonebook/createPhonebook" method="post">
         <input type="text" name="firstName" placeholder="First name">
